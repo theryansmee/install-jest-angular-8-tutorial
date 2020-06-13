@@ -25,10 +25,12 @@ describe('NewComponentComponent', () => {
 	});
 
 	describe( 'methodThatCallsAnother', () => {
-		const addNumbersSpy = jest.spyOn( fixture, 'addNumbers' );
+		it ( 'should call call addNumbers', () => {
+			const addNumbersSpy = jest.spyOn( fixture, 'addNumbers' );
 
-		fixture.methodThatCallsAnother();
+			fixture.methodThatCallsAnother();
 
-		expect( addNumbersSpy ).toBeCalledWith( 1, 2 );
+			expect( addNumbersSpy ).toBeCalledWith( 1, 2 );
+		});
 	});
 });
