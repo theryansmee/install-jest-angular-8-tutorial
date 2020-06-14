@@ -11,10 +11,9 @@ You should able to have Jest up and running by through steps 1-7. Step 8 is an o
 
 2. Install `npm install --save-dev jest jest-preset-angular @types/jest` 
 
-3. Create `setupJest.ts` to project root and add the following:
+3. Create `setup-jest.ts` to project root and add the following:
 ```ts 
 import 'jest-preset-angular';
-// import './jestGlobalMocks'; // browser mocks globally available for every test
 ```
 
 4. Create `jest.config.js` in project root and add the following:
@@ -22,7 +21,7 @@ import 'jest-preset-angular';
 module.exports = {
     "preset": "jest-preset-angular",
     "setupFilesAfterEnv": [
-        "<rootDir>/setupJest.ts"
+        "<rootDir>/setup-jest.ts"
     ],
     "transformIgnorePatterns": [
         "node_modules/(?!@ngrx|ngx-socket-io)" // Last any packages here that error
