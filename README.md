@@ -1,27 +1,70 @@
-# InstallJestAngular8
+# Install Jest Tutorial
+Video guide: https://www.youtube.com/watch?v=Dt8RtykEglo
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.27.
+## Introduction:
 
-## Development server
+You should able to have Jest up and running by through steps 1-7. Step 8 is an optional clean-up step. If you would like to install a Jest/Karma hybrid, you can also leave `karma.conf.js` in, and rename `test.ts` to something like `karmaTest.ts`.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Steps:
 
-## Code scaffolding
+1. Remove karma & jasmine stuff with 
+`npm remove karma karma-chrome-launcher karma-coverage-istanbul-reporter karma-jasmine karma-jasmine-html-reporter`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+2. Install `npm install --save-dev jest jest-preset-angular @types/jest` 
 
-## Build
+3. Create `setup-jest.ts` to project root and add the following:
+```ts 
+import 'jest-preset-angular';
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+4. Create `jest.config.js` in project root and add the following:
+```ts
+module.exports = {
+    "preset": "jest-preset-angular",
+    "setupFilesAfterEnv": [
+        "<rootDir>/setup-jest.ts"
+    ],
+    "transformIgnorePatterns": [
+        "node_modules/(?!@ngrx|ngx-socket-io)" // Last any packages here that error
+    ],
+    "transform": {
+        "^.+\\.(ts|js|html)$": "ts-jest"
+    },
+    "testPathIgnorePatterns": [
+        "<rootDir>/node_modules/",
+        "<rootDir>/dist/",
+        "<rootDir>/cypress/",
+        "<rootDir>/src/test.ts",
+    ]
+};
+```
 
-## Running unit tests
+5. Add the following `types` array to `compilerOptions` in `tsconfig.json`:
+```json
+    "compilerOptions": {
+        "types": [
+            "jest"
+        ]
+    }
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+6. Replace `jasmine` with `jest` in `types` array of `compilerOptions` in `tsconfig.spec.json`:
+```json
+"compilerOptions": {
+    "types": [
+        "jest",
+        "node"
+    ],
+}
+```
 
-## Running end-to-end tests
+7. Add jest scripts to `package.json`:
+```json
+"scripts": { 
+    "test": "jest",
+    "test-watch": "jest --watch"
+}
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+8. _(Optional)_ Remove `karma.conf.js` and `test.ts`
+`rm ./karma.conf.js ./src/test.ts`
