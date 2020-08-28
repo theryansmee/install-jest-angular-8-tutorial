@@ -7,7 +7,7 @@ You should able to have Jest up and running by through steps 1-7. Step 8 is an o
 ## Steps:
 
 1. Remove karma & jasmine stuff with 
-`npm remove karma karma-chrome-launcher karma-coverage-istanbul-reporter karma-jasmine karma-jasmine-html-reporter`
+`npm remove karma karma-chrome-launcher karma-coverage-istanbul-reporter karma-jasmine karma-jasmine-html-reporter @types/jasmine @types/jasminewd2 jasmine-core jasmine-spec-reporter`
 
 2. Install `npm install --save-dev jest jest-preset-angular @types/jest` 
 
@@ -65,5 +65,5 @@ module.exports = {
 }
 ```
 
-8. _(Optional)_ Remove `karma.conf.js` and `test.ts`
+8. _(Optional)_ Remove `karma.conf.js` and `test.ts`:
 `rm ./karma.conf.js ./src/test.ts`
