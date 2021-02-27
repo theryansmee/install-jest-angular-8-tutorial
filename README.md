@@ -5,8 +5,6 @@ Video guide: https://www.youtube.com/watch?v=Dt8RtykEglo
 
 By working through steps 1-7, you will be able to set up Jest in any Angular v8-v10 project. Step 8 is an optional clean-up step. If you would like to install a Jest/Karma hybrid, you can also leave `karma.conf.js` in, and rename `test.ts` to something like `karmaTest.ts`.
 
-To install Jest in an Angular 11 project use my [install-jest-angular-eleven-tutorial](https://github.com/theryansmee/install-jest-angular-eleven-tutotial) repo.
-
 ## Steps:
 
 1. Remove karma & jasmine stuff with 
